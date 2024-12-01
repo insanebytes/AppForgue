@@ -1,0 +1,10 @@
+[submodule "AppForgue/vendor/glfw"]
+	path = AppForgue/vendor/glfw
+	url = https://github.com/insanebytes/glfw.git
+[submodule "AppForgue/vendor/imgui"]
+	path = AppForgue/vendor/imgui
+	url = https://github.com/insanebytes/imgui.git
+	branch = docking
+[submodule "AppForgue/vendor/glm"]
+	path = AppForgue/vendor/glm
+	url = https://github.com/insanebytes/glm.git
