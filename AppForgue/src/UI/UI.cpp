@@ -76,12 +76,20 @@ namespace Windowing
 		window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
 		window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
 		ImGui::Begin("DockSpaceWindow", nullptr, window_flags);
+
+		ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+		dockspace_flags |= ImGuiDockNodeFlags_PassthruCentralNode | ImGuiDockNodeFlags_KeepAliveOnly;
+
+		ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+		ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 	}
 
 	void UI::EndDockSpace()
 	{
 		if (dockspaceInitialized)
+		{
 			dockspaceInitialized = false;
 			ImGui::End();
+		}
 	}
 }
