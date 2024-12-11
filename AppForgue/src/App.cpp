@@ -4,6 +4,9 @@ void App::Run(Windowing::Window &mainWindow, std::function<void(Windowing::Windo
 {
     Windowing::UI::Init(mainWindow,mainWindow.creationHints->docking,mainWindow.creationHints->viewport);
 
+    //hack because in initial window creation, viewport displaces up
+    mainWindow.ResizeWindow(mainWindow.creationHints->width+1, mainWindow.creationHints->height+1);
+
     while (!glfwWindowShouldClose(mainWindow.windowHandle))
     {
         glfwPollEvents();

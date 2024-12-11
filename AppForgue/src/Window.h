@@ -37,6 +37,16 @@ namespace Windowing
 		/// UI of window supports getting outside of window
 		/// </summary>
 		bool viewport = false;
+
+		/// <summary>
+		/// Default width of window
+		/// </summary>
+		int width = 1024;
+
+		/// <summary>
+		/// Default height of window
+		/// </summary>
+		int height = 768;
 	};
 
 	/// <summary>
@@ -55,6 +65,7 @@ namespace Windowing
 		bool IsMinimized();
 		bool IsMaximized();
 		void SetTitleBarHitted(bool hitted);
+		void ResizeWindow(int width, int height);
 
 		WindowHints* creationHints;
 

@@ -20,7 +20,7 @@ namespace Windowing
 		}
 
 		glfwWindowHint(GLFW_MAXIMIZED, hints.maximized);
-		windowHandle = glfwCreateWindow(1024, 768, hints.appTitle, NULL, NULL);
+		windowHandle = glfwCreateWindow(creationHints->width-1, creationHints->height-1, hints.appTitle, NULL, NULL);
 
 		if (!windowHandle)
 		{
@@ -40,6 +40,10 @@ namespace Windowing
 			});
 		}
 
+		glfwSetWindowSizeCallback(windowHandle, [](GLFWwindow* window, int width, int height) {
+			glViewport(0, 0, width, height);
+		});
+
 		glfwSetInputMode(windowHandle, GLFW_STICKY_KEYS, GLFW_TRUE);
 		glfwMakeContextCurrent(windowHandle);
 		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -54,7 +58,7 @@ namespace Windowing
 		}
 		else
 		{
-			glViewport(0, 0, 1024, 768);
+			glViewport(0, 0, creationHints->width-1, creationHints->height-1);
 		}
 	}
 
@@ -77,5 +81,10 @@ namespace Windowing
 	void Window::SetTitleBarHitted(bool hitted)
 	{
 		titleBarHit = hitted;
+	}
+
+	void Window::ResizeWindow(int width, int height)
+	{
+		glfwSetWindowSize(windowHandle, width, height);
 	}
 }
